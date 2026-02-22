@@ -18,7 +18,7 @@ class CustomerService {
         "last_note",
         "probability_category" AS prediction, -- Kolom Kategori dari DB
         COALESCE("contact_status", 0) AS contacted
-      FROM nasabah
+      FROM nextcall.nasabah
       WHERE 1=1
     `;
 
@@ -93,7 +93,7 @@ class CustomerService {
           "emp.var.rate_cat" AS emp_rate,      -- Ekonomi (Buruk/Stabil/Baik)
           "cons.conf.idx_cat" AS conf_idx,     -- Kepercayaan Konsumen (Pesimis/Optimis)
           "cons_price_category" AS price_idx   -- Inflasi/Harga (Rendah/Tinggi)
-        FROM nasabah 
+        FROM nextcall.nasabah 
         WHERE id = $1
       `,
       values: [id],
@@ -112,7 +112,7 @@ class CustomerService {
   async updateContactStatus(id, note) {
     const query = {
       text: `
-        UPDATE nasabah 
+        UPDATE nextcall.nasabah 
         SET 
           "contact_status" = 1, 
           "last_note" = $2,

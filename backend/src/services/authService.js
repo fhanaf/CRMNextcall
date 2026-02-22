@@ -5,7 +5,7 @@ const AuthenticationError = require('../exceptions/AuthenticationError');
 class AuthService {
   async verifyUserCredential(email, password) {
     const query = {
-      text: 'SELECT id, password, name FROM sales WHERE email = $1',
+      text: 'SELECT id, password, name FROM nextcall.sales WHERE email = $1',
       values: [email],
     };
     const result = await pool.query(query);
@@ -32,7 +32,7 @@ class AuthService {
 
     for (const user of users) {
       await pool.query(
-        `INSERT INTO sales (name, email, password, role, daily_target) 
+        `INSERT INTO nextcall.sales (name, email, password, role, daily_target) 
          VALUES ($1, $2, '${passwordHash}', $3, $4)`,
         user
       );
