@@ -1,0 +1,79 @@
+/* Container utama: Ungu gradient penuh layar */
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Kartu Login: Putih di tengah */
+.login-card {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Judul & Teks */
+.login-card h2 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.login-card p {
+  margin-bottom: 25px;
+}
+
+/* Form Input */
+form label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 6px;
+  margin-top: 15px;
+}
+
+form input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border 0.2s;
+  box-sizing: border-box; /* Penting agar tidak melebar */
+}
+
+form input:focus {
+  border-color: #4f46e5;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Tombol Login */
+.btn-signin {
+  margin-top: 25px;
+  width: 100%;
+  padding: 12px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-signin:hover {
+  background-color: #4338ca;
+}
+
+.btn-signin:disabled {
+  background-color: #a5a6f6;
+  cursor: not-allowed;
+}
