@@ -8,6 +8,11 @@ const pool = new Pool({
   },
 });
 
+// Set search_path agar query otomatis cari di schema 'nextcall'
+pool.on('connect', (client) => {
+  client.query("SET search_path TO nextcall, public");
+});
+
 pool.connect((err) => {
   if (err) {
     console.error('Koneksi Database GAGAL:', err.message);
