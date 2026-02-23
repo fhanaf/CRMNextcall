@@ -4,7 +4,7 @@ const pool = require('../config/postgres');
 const getProfile = async (req, res, next) => {
   try {
     const id = req.query.id || 1;
-    const result = await pool.query('SELECT id, name, email, daily_target, notes FROM sales WHERE id = $1', [id]);
+    const result = await pool.query('SELECT id, name, email, daily_target, notes FROM nextcall.sales WHERE id = $1', [id]);
 
     if (result.rows.length > 0) {
       res.json({ status: 'success', data: result.rows[0] });
@@ -21,7 +21,7 @@ const updateProfile = async (req, res, next) => {
   try {
     const { id, name, email, } = req.body;
     await pool.query(
-      'UPDATE sales SET name=$1, email=$2, daily_target=$3 WHERE id=$4',
+      'UPDATE nextcall.sales SET name=$1, email=$2, daily_target=$3 WHERE id=$4',
       [name, email, id]
     );
     res.json({ status: 'success', message: 'Profil diperbarui' });
@@ -34,7 +34,7 @@ const updateProfile = async (req, res, next) => {
 const updateNotes = async (req, res, next) => {
   try {
     const { id, notes } = req.body;
-    await pool.query('UPDATE sales SET notes=$1 WHERE id=$2', [notes, id]);
+    await pool.query('UPDATE nextcall.sales SET notes=$1 WHERE id=$2', [notes, id]);
     res.json({ status: 'success', message: 'Catatan disimpan' });
   } catch (error) {
     next(error);
